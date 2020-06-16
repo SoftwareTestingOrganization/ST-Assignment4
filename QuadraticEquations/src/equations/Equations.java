@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Nabiya
+ * @author Nabiya Fatima
  */
 public class Equations {
 

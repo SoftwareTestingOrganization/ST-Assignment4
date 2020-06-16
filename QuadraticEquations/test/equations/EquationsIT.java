@@ -14,28 +14,26 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Nabiya
-
+ * @author Nabiya Fatima
  */
 public class EquationsIT {
-    
+    Equations e;
+    String str1="Invalid Range ";
+    String str2="Equal Roots";
+    String str3="Real Roots";
+     String str4="Imaginary Roots";
     public EquationsIT() {
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
+   
     
     @Before
     public void setUp() {
+          e = new Equations();
     }
     
     @After
     public void tearDown() {
+        System.out.println("Function Tested successfully");
     }
 
     /**
@@ -44,49 +42,40 @@ public class EquationsIT {
     @Test
     public void testCheckRoots() {
         System.out.println("checkRoots");
-        int a = 0;
-        int b = 0;
-        int c = 0;
-        Equations e = new Equations();
         
+        //Equations e = new Equations();
+        int[] a={0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,1,1};
+         int[] b={100,100,0,0,10,2,0,0,100,100,0,20,1,100,0,0,30,1};
+         int[] c={201,1,201,0,201,-1,201,0,201,1,201,-1,202,100,202,100,201,201};
+        boolean[] flag={false,true,false,true,false,false,false,true,false,true,false,false,false,true,false,true,false,false};
         
-        
-        assertSame("Invalid Range ",e.checkRoots(0, 100, 201,false) );
-        assertSame("Invalid Range ",e.checkRoots(0, 100, 1,true) );
-        assertSame("Invalid Range ",e.checkRoots(0, 0, 201,false) );
-        assertSame("Invalid Range ",e.checkRoots(0, 0, 0,true) );
-        assertSame("Invalid Range ",e.checkRoots(1, 10, 201,false) );
-      assertSame("Real Roots",e.checkRoots(1, 1, 0,true) );
-       assertSame("Invalid Range ",e.checkRoots(1, 2, -1,false) );
-       assertSame("Equal Roots",e.checkRoots(1, 0, 0,true) );
-       
-       
-      assertSame("Invalid Range ",e.checkRoots(0, 0, 201,false) );
-      assertSame("Invalid Range ",e.checkRoots(0, 0, 0,true) );
-       assertSame("Invalid Range ",e.checkRoots(0, 100, 201,false) );
-       assertSame("Invalid Range ",e.checkRoots(0, 100, 1,true) );
-      assertSame("Invalid Range ",e.checkRoots(1, 0, 201,false) );
-     assertSame("Imaginary Roots",e.checkRoots(1, 0, 100,true) );
-       assertSame("Invalid Range ",e.checkRoots(1, 20, -1,false) );
-       assertSame("Real Roots",e.checkRoots(1, 1, 0,true) );
-       
-       
-       assertSame("Invalid Range ",e.checkRoots(0, 1, 202,false) );
-      assertSame("Invalid Range ",e.checkRoots(0, 100, 100,true) );
-       assertSame("Invalid Range ",e.checkRoots(0, 0, 202,false) );
-       assertSame("Invalid Range ",e.checkRoots(0, 0, 100,true) );
-      assertSame("Invalid Range ",e.checkRoots(1, 30, 201,false) );
-     assertSame("Real Roots",e.checkRoots(1, 30, 100,true) );
-       assertSame("Invalid Range ",e.checkRoots(1, 1, 201,false) );
-       assertSame("Imaginary Roots",e.checkRoots(1, 1, 1,true) );
-        
-        
-        
+        for(int i=0;i<18;i++)
+        {
+            assertSame(str1,e.checkRoots(a[i], b[i], c[i],flag[i]) );
+        }
+      
     }
 
-    /**
-     * Test of main method, of class Equations.
-     */
-   
+    @Test
+    public void testforRealRoots() {
+        System.out.println("checkRoots");
+       
+      assertSame(str3,e.checkRoots(1, 1, 0,true) );
+      
+    }
+   @Test
+    public void testforEqualRoots() {
+        System.out.println("checkRoots");
+        
+      assertSame(str2,e.checkRoots(1, 0, 0,true) );
+      
+    }
+    @Test
+    public void testforValidEqualRoots() {
+        System.out.println("checkRoots");
+       
+       assertSame(str4,e.checkRoots(1, 1, 1,true) );
+      
+    }
     
 }
